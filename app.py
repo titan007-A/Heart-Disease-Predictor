@@ -7,7 +7,7 @@ model = joblib.load("Model_LR_heart.pkl")
 scaler = joblib.load("scaler.pkl")
 expected_columns = joblib.load("columns.pkl")
 
-st.title("Heart Stroke Prediction by akarsh")
+st.title("Heart Stroke Prediction by Siddhant😎")
 st.markdown("Provide the following details to check your heart stroke risk:")
 
 # Collect user input
@@ -60,6 +60,8 @@ if st.button("Predict"):
 
     # Show result
     if prediction == 1:
-        st.error("⚠️ High Risk of Heart Disease")
+        st.error(""" High Risk of Heart Disease.
+        Please take better care of yourself😔""")
     else:
-        st.success("✅ Low Risk of Heart Disease")
+        st.success(""" Low Risk of Heart Disease
+        You are doing good,keep it up.😁""")
