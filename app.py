@@ -3,9 +3,9 @@ import pandas as pd
 import joblib
 
 # Load saved model, scaler, and expected columns
-model = joblib.load("Model_LR_heart.pkl")
-scaler = joblib.load("scaler.pkl")
-expected_columns = joblib.load("columns.pkl")
+model = joblib.load("knn_heart_model.pkl")
+scaler = joblib.load("heart_scaler.pkl")
+expected_columns = joblib.load("heart_columns.pkl")
 
 st.title("Heart Stroke Prediction by Siddhant😎")
 st.markdown("Provide the following details to check your heart stroke risk:")
@@ -44,6 +44,7 @@ if st.button("Predict"):
     # Create input dataframe
     input_df = pd.DataFrame([raw_input])
 
+
     # Fill in missing columns with 0s
     for col in expected_columns:
         if col not in input_df.columns:
@@ -51,6 +52,7 @@ if st.button("Predict"):
 
     # Reorder columns
     input_df = input_df[expected_columns]
+    print(input_df.head())
 
     # Scale the input
     scaled_input = scaler.transform(input_df)
@@ -62,6 +64,7 @@ if st.button("Predict"):
     if prediction == 1:
         st.error(""" High Risk of Heart Disease.
         Please take better care of yourself😔""")
+        
     else:
         st.success(""" Low Risk of Heart Disease
         You are doing good,keep it up.😁""")
